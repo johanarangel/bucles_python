@@ -201,8 +201,7 @@ def ej3():
     
     print('La cantidad de ausentes: {}'.format(cantidad_ausentes))
     print('La cantidad de notas válidas: {}'.format(cantidad_validas))
-    print('Cantidad notas', cantidad_notas)
-    print('Sumatoria notas', sumatoria)
+  
 
 def ej4():
     print("Mi primer pasito en data analytics")
