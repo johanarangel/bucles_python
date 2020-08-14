@@ -3,17 +3,17 @@
 Bucles [Python]
 Ejercicios de práctica
 ---------------------------
-Autor: Inove Coding School
-Version: 1.1
+Autor: Johana Rangel
+Version: 1.2
 
 Descripcion:
 Programa creado para que practiquen los conocimietos
 adquiridos durante la semana
 '''
 
-__author__ = "Inove Coding School"
-__email__ = "alumnos@inove.com.ar"
-__version__ = "1.1"
+__author__ = "Johana Rangel"
+__email__ = "johanarang@hotmail.com"
+__version__ = "1.2"
 
 # Variable global utilizada para el ejercicio de nota
 notas = [70, 82, -1, 65, 55, 67, 87, 92, -1]
@@ -48,6 +48,19 @@ def ej1():
 
     # Imprimir resultado en pantalla
 
+    cantidad_numeros = 0
+    sumatoria = 0
+        
+    inicio = int(input('Ingrese el primer número de la secuencia numérica:\n'))
+    fin = int(input('Ingrese el último número de la secuencia numérica:\n'))
+
+    for numero in range(inicio, fin+1):
+        cantidad_numeros += 1
+        sumatoria += numero 
+        promedio = sumatoria / cantidad_numeros
+    
+    print('Sumatoria: {}, Cantidad de numeros ingresados: {} y promedio: {}'.format(sumatoria, cantidad_numeros, promedio))
+
 
 def ej2():
     print("Mi Calculadora (^_^)")
@@ -62,8 +75,54 @@ def ej2():
     Se debe debe imprimir un cartel de error si el operador ingresado no es
     alguno de lo soportados o no es la palabra "FIN"
     '''
+    contador = 0
+    simbolo_operacion = True
+    
+    while simbolo_operacion: 
 
+        numero_uno = float(input('Ingrese un número: \n'))
+        numero_dos = float(input('Ingrese otro número diferente de cero: \n'))          
+        print('Ingrese el simbolo de la operación a realizar (+ suma, - resta, * multiplicación, / división, **Potencia ) o ingrese la palabra FIN para terminar el programa:')
+        simbolo_operacion =  str(input())
+        
+        if (simbolo_operacion == 'FIN'):
+            print('Ha salido del programa')
+            break 
+        
+        elif (simbolo_operacion == '+'):
+            resultado = numero_uno + numero_dos
+            print('El resultado de sumar {} y {} es {}'.format(numero_uno, numero_dos, resultado))
+            contador += 1
+            continue
 
+        elif (simbolo_operacion == '-'):
+            resultado = numero_uno - numero_dos
+            print('El resultado de restar {} y {} es {}'.format(numero_uno, numero_dos, resultado))
+            contador += 1
+            continue  
+
+        elif (simbolo_operacion == '*'):
+            resultado = numero_uno * numero_dos
+            print('El resultado de multiplicar {} y {} es {}'.format(numero_uno, numero_dos, resultado))
+            contador += 1
+            continue  
+
+        elif (simbolo_operacion == '/'):
+            resultado = numero_uno / numero_dos
+            print('El resultado de dividir {} y {} es {}'.format(numero_uno, numero_dos, resultado))
+            contador += 1
+            continue   
+
+        elif (simbolo_operacion == '**'):
+            resultado = numero_uno ** numero_dos
+            print('El resultado de {} a la potencia {} es {}'.format(numero_uno, numero_dos, resultado))
+            contador += 1
+            continue
+                     
+        else:
+            print('Error, el simbolo ingresado no corresponde con los indicados, intente nuevamente')
+    
+ 
 def ej3():
     print("Mi organizador académico (#_#)")
 
@@ -85,13 +144,12 @@ def ej3():
 
     Debe contar la cantidad de notas válidas y la cantidad de ausentes
     '''
-
     # Para calcular el promedio primero debe obtener la suma
     # de todas las notas, que irá almacenando en esta variable
-    sumatoria = 0           # Ya le hemos inicializado en 0
+    #sumatoria = 0           # Ya le hemos inicializado en 0
 
-    cantidad_notas = 0      # Aquí debe contar cuantas notas válidas encontró
-    cantidad_ausentes = 0   # Aquí debe contar cuantos ausentes hubo
+    #cantidad_notas = 0      # Aquí debe contar cuantas notas válidas encontró
+    #cantidad_ausentes = 0   # Aquí debe contar cuantos ausentes hubo
 
     # Realice aquí el bucle para recorrer todas las notas
     # y cacular la sumatoria
@@ -103,7 +161,48 @@ def ej3():
     # a calificación con letras, imprima en pantalla el resultado
 
     # Imprima en pantalla al cantidad de ausentes
+     # Si el puntaje es mayor igual a 90 --> imprimir A
+    # Si el puntaje es mayor igual a 80 --> imprimir B
+    # Si el puntaje es mayor igual a 70 --> imprimir C
+    # Si el puntaje es mayor igual a 60 --> imprimir D
+    # Si el puntaje es manor a  60      --> imprimir F
 
+    sumatoria = 0
+    cantidad_validas = 0
+    cantidad_ausentes = 0
+    promedio = 0
+    cantidad_notas = len(notas)
+       
+    for nota in notas:
+        sumatoria += nota
+
+        if (nota >= 90 or nota >= 80 or nota >= 70 or nota >= 60 or nota < 60):
+            cantidad_validas += 1
+
+        if (nota < 0):
+            cantidad_ausentes += 1
+
+    promedio = sumatoria / cantidad_notas
+   
+    if promedio >= 90:
+        print('El promedio {} equivale a "A"'.format(round(promedio, 2))) 
+    
+    elif promedio >= 80:
+        print('El promedio {} equivale a "B"'.format(round(promedio, 2))) 
+    
+    elif promedio >= 70:
+        print('El promedio {} equivale a "C"'.format(round(promedio, 2)))
+    
+    elif promedio >= 60:
+        print('El promedio {} equivale a "D"'.format(round(promedio, 2)))
+    
+    else:
+        print('El promedio {} equivale a "F"'.format(round(promedio, 2)))  
+    
+    print('La cantidad de ausentes: {}'.format(cantidad_ausentes))
+    print('La cantidad de notas válidas: {}'.format(cantidad_validas))
+    print('Cantidad notas', cantidad_notas)
+    print('Sumatoria notas', sumatoria)
 
 def ej4():
     print("Mi primer pasito en data analytics")
@@ -141,15 +240,33 @@ def ej4():
     temperatura_min = None      # Aquí debe ir almacenando la temp mínima
     temperatura_sumatoria = 0   # Aquí debe ir almacenando la suma de todas las temp
     temperatura_promedio = 0    # Al finalizar el loop deberá aquí alamcenar el promedio
-    temperatura_len = 0         # Aquí debe almacenar cuantas temperatuas hay en la lista
+    temperatura_len = len(temp_dataloger)         # Aquí debe almacenar cuantas temperatuas hay en la lista
+    
 
     # Colocar el bucle aqui......
 
+    for temperatura in temp_dataloger:
+        temperatura_sumatoria += temperatura
+
+        if (temperatura_max is None) or (temperatura > temperatura_max):
+            temperatura_max = temperatura
+                        
+        if (temperatura_min is None) or (temperatura < temperatura_min):
+            temperatura_min = temperatura        
+            continue
+
+    temperatura_promedio = temperatura_sumatoria / temperatura_len
+
+    print('El temperatura máxima es: {}, la minima es: {} y el promedio de temperatura es: {}'.format(temperatura_max, temperatura_min, round(temperatura_promedio,2))) 
+ 
     # Al finalizar el bucle compare si el valor que usted calculó para
     # temperatura_max y temperatura_min coincide con el que podría calcular
     # usando la función "max" y la función "min" de python
     # función "max" --> https://www.w3schools.com/python/ref_func_max.asp
     # función "min" --> https://www.w3schools.com/python/ref_func_min.asp
+
+    print("Máxima temperatura = ", max(temp_dataloger))
+    print("Minima temperatura = ", min(temp_dataloger))
 
     # Al finalizar el bucle debe calcular el promedio como:
     # temperatura_promedio = temperatura_sumatoria / cantidad_temperatuas
@@ -157,6 +274,8 @@ def ej4():
     # Corroboren los resultados de temperatura_sumatoria
     # usando la función "sum"
     # función "sum" --> https://www.w3schools.com/python/ref_func_sum.asp
+    
+    print("temperatura_sumatoria = ", round(sum(temp_dataloger),2))
 
     '''
     Una vez que tengamos nuestros valores correctamente calculados debemos
@@ -172,12 +291,23 @@ def ej4():
     Referencia:
     https://es.weatherspark.com/y/28981/Clima-promedio-en-Buenos-Aires-Argentina-durante-todo-el-a%C3%B1o
     '''
-
     # En base a los rangos de temperatura de cada estación,
     # ¿En qué época del año nos encontramos?
     # Imprima el resultado en pantalla
     # Debe utilizar temperatura_max y temperatura_min para definirlo
+   
+    if (19 < temperatura_promedio < 28):
+       print('La época del año actualmente es verano')
 
+    elif (11 < temperatura_promedio < 24):
+        print('La época del año actualmente es otoño')
+
+    elif (8 < temperatura_promedio < 14):
+        print('La época del año actualmente es invierno')
+
+    elif (10 < temperatura_promedio < 24):
+        print('La época del año actualmente es primavera')
+    
 
 def ej5():
     print("Ahora sí! buena suerte :)")
@@ -245,12 +375,51 @@ def ej5():
        recorre la lista de palabras y busca la mayor según el motivo ingresado ("1" o "2")
 
   '''
+    consulta = True
+    maxima_palabra = ''
+    lista_palabras = []
+    palabra_mayor = ''
+         
+    while consulta:
+        consulta = str(input('Cómo quiere ordenar la palabras? \n Ingrese 1, para ordenar por alfabético. \n Ingrese 2, par ordenar por cantidad de letras?: \n .Ingrese 3, para salir del programa: \n'))
+        
+        if consulta == '3':
+            print('El programa ha finalizado')
+            break
 
+        if consulta == '1':    
+            for palabra in range(3):
+                palabra = str(input('Ingrese una palabra:\n'))
+                lista_palabras.append(palabra)
+                continue
 
+            for palabra in lista_palabras:
+                if palabra > maxima_palabra:
+                    maxima_palabra = palabra
+
+            print('La palabra más grande alfabeticamente es {}'.format(maxima_palabra))
+                     
+        elif consulta == '2':
+            for palabras in range(3):
+                palabras = str(input('Ingrese una palabra:\n'))
+                lista_palabras.append(palabras)
+                continue
+
+            for palabras in lista_palabras:
+                if (len(palabras) > len(palabra_mayor)):
+                    palabra_mayor = palabras
+                    
+            print('La palabra más grande por cantidad de letras es {}'.format(palabra_mayor))
+        
+        else:
+            print('Error, el valor ingresado no corresponde con los indicados. Intente nuevamente.')
+            continue
+        
+        
 if __name__ == '__main__':
     print("Ejercicios de práctica")
     #ej1()
     #ej2()
-    #ej3()
+    ej3()
     #ej4()
     #ej5()
