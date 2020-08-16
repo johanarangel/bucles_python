@@ -93,31 +93,31 @@ def ej2():
             resultado = numero_uno + numero_dos
             print('El resultado de sumar {} y {} es {}'.format(numero_uno, numero_dos, resultado))
             contador += 1
-            continue
+            continue  # Inove: Este continue no es necesario ya que el programa al salir de acá igual volverá al principio del while
 
         elif (simbolo_operacion == '-'):
             resultado = numero_uno - numero_dos
             print('El resultado de restar {} y {} es {}'.format(numero_uno, numero_dos, resultado))
             contador += 1
-            continue  
+            continue  # Inove: Este continue no es necesario ya que el programa al salir de acá igual volverá al principio del while
 
         elif (simbolo_operacion == '*'):
             resultado = numero_uno * numero_dos
             print('El resultado de multiplicar {} y {} es {}'.format(numero_uno, numero_dos, resultado))
             contador += 1
-            continue  
+            continue  # Inove: Este continue no es necesario ya que el programa al salir de acá igual volverá al principio del while
 
         elif (simbolo_operacion == '/'):
             resultado = numero_uno / numero_dos
             print('El resultado de dividir {} y {} es {}'.format(numero_uno, numero_dos, resultado))
             contador += 1
-            continue   
+            continue  # Inove: Este continue no es necesario ya que el programa al salir de acá igual volverá al principio del while 
 
         elif (simbolo_operacion == '**'):
             resultado = numero_uno ** numero_dos
             print('El resultado de {} a la potencia {} es {}'.format(numero_uno, numero_dos, resultado))
             contador += 1
-            continue
+            continue  # Inove: Este continue no es necesario ya que el programa al salir de acá igual volverá al principio del while
                      
         else:
             print('Error, el simbolo ingresado no corresponde con los indicados, intente nuevamente')
@@ -252,7 +252,7 @@ def ej4():
                         
         if (temperatura_min is None) or (temperatura < temperatura_min):
             temperatura_min = temperatura        
-            continue
+            continue  # Inove: Este continue no es necesario ya que en el próximo paso volvera al "for temperatura in temp_dataloger"
 
     temperatura_promedio = temperatura_sumatoria / temperatura_len
 
@@ -402,7 +402,7 @@ def ej5():
             for palabras in range(3):
                 palabras = str(input('Ingrese una palabra:\n'))
                 lista_palabras.append(palabras)
-                continue
+                continue  # Inove: Este continue no es necesario ya que en el próximo paso volvera al "for palabras in range(3):"
 
             for palabras in lista_palabras:
                 if (len(palabras) > len(palabra_mayor)):
